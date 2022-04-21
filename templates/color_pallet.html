@@ -1,0 +1,30 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+{% block title %}Restaurants{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    <h1 style="text-align:center">Images</h1>
+      <div align="center" >
+        <img src="{{url_for('static', filename=img_url)}}" alt="" style="max-height: 350px; max-width: 100%;">
+      </div>
+      <h1 style="text-align:center">All Color</h1>
+	  {% for color in img_pallete %}
+          <div style="background-color:{{color}}; color:#000" style="max-height:400px; max-width:400px">
+            {{color}}
+          </div>
+        {% endfor %}
+    <a class="btn btn-warning btn-lg" href="{{ url_for('get_image') }}" style="margin:40px; margin-left:30%"  role="button">Get Image and generate color pallet.</a>
+      <p><a href="{{ url_for('home') }}" style="margin:40px; margin-left:40%">Return to index page</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
